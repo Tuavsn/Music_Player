@@ -3,6 +3,7 @@ const admin = require("../config/firebase.config");
 
 const router = require("express").Router();
 
+//user authentication
 router.get("/login", async (req, res) => {
   if (!req.headers.authorization) {
     return res.status(500).send({ message: "Invalid Token" });
@@ -23,6 +24,27 @@ router.get("/login", async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: error });
+  }
+});
+
+//get user
+router.get("/getUser/:userId", async (req, res) => {
+  const filter = { _id: req.params.userId };
+  const userExist = await user.findOne({ _id: filter });
+  if (userExist) {
+    res.status(200).send({ success: true, data: userExist });
+  } else {
+    res.status(400).send({ success: false, msg: "No data found!" });
+  }
+});
+
+//get all users
+router.get("/getAll", async (req, res) => {
+  const cursor = await user.find();
+  if (cursor) {
+    res.status(200).send({ success: true, data: cursor });
+  } else {
+    res.status(400).send({ success: false, msg: "No data found!" });
   }
 });
 
@@ -62,4 +84,4 @@ async function updateUserData(decodeValue, req, res) {
   }
 }
 
-module.export = router;
+module.exports = router;

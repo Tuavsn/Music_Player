@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -10,4 +10,4 @@ const userSchema = new mongoose.Schema({
   auth_time: { type: String, required: true }
 }, {timestamps: true});
 
-module.export = mongoose.model("user", userSchema)
+module.exports = mongoose.model("user", userSchema)

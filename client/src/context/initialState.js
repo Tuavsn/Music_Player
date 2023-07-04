@@ -1,7 +1,8 @@
 export const initialState = {
   user: null,
-  artists: null,
+  allArtists: null,
   allUsers: null,
   allSongs: null,
+  allAlbums: null,
   song: 0,
 };
