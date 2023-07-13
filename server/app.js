@@ -19,6 +19,12 @@ app.use("/api/song/", songsRoute)
 //Album Route
 const AlbumsRoute = require("./routes/albums")
 app.use("/api/album/", AlbumsRoute)
+//Zing route
+const ZingRoute = require("./routes/zing")
+app.use("/api/zing/", ZingRoute)
+//Nhaccuatui route
+const NhaccuatuiRoute = require("./routes/nhaccuatui")
+app.use("/api/nhaccuatui/", NhaccuatuiRoute)
 
 mongoose.connect('mongodb+srv://HocTuan:12345@cluster0.zhrd3od.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true });
 mongoose.connection.once("open", () => console.log("Connected")).on("error", (error) => console.log(`Error: ${error}`));

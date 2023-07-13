@@ -48,6 +48,20 @@ router.get("/getAll", async (req, res) => {
   }
 });
 
+router.get("/search/:key", async (req, res) => {
+  const result = await user.find({
+    $or: [
+      { name: { $regex: req.params.key } },
+      { email: { $regex: req.params.key } },
+    ],
+  });
+  if (result) {
+    res.status(200).send({ success: true, data: result });
+  } else {
+    res.status(400).send({ success: false, msg: "No data found!" });
+  }
+});
+
 async function newUserData(decodeValue, req, res) {
   const newUser = new user({
     name: decodeValue.name,

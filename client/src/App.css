@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.rhap_volume-button,
+.rhap_main-controls-button,
+.rhap_repeat-button,
+.rhap_play-pause-button,
+.rhap_time {
+  color: white !important;
+}
+
+.rhap_progress-filled,
+.rhap_volume-bar {
+  background-color: white !important;
+}

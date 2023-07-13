@@ -26,13 +26,14 @@ router.post("/save", async (req, res) => {
     name: req.body.name,
     imageURL: req.body.imageURL,
     songURL: req.body.songURL,
+    album: req.body.album,
     artist: req.body.artist,
     language: req.body.language,
     category: req.body.category,
   });
   try {
     const saveSong = await newSong.save();
-    res.status(200).send({ success: true, artist: saveSong });
+    res.status(200).send({ success: true, data: saveSong });
   } catch (error) {
     res.status(400).send({ success: false, msg: error });
   }
@@ -57,7 +58,7 @@ router.put("/update/:songId", async (req, res) => {
       },
       options
     );
-    res.status(200).send({ success: true, song: result });
+    res.status(200).send({ success: true, data: result });
   } catch (error) {
     res.status(400).send({ success: false, msg: error });
   }
@@ -70,6 +71,22 @@ router.delete("/delete/:songId", async (req, res) => {
     res.status(200).send({ success: true, msg: "Data deleted!" });
   } else {
     res.status(400).send({ success: false, msg: "Data not found" });
+  }
+});
+
+router.get("/search/:key", async (req, res) => {
+  const result = await song.find({
+    $or: [
+      { name: { $regex: req.params.key } },
+      { artist: { $regex: req.params.key } },
+      { language: { $regex: req.params.key } },
+      { category: { $regex: req.params.key } },
+    ],
+  });
+  if (result) {
+    res.status(200).send({ success: true, data: result });
+  } else {
+    res.status(400).send({ success: false, msg: "No data found!" });
   }
 });
 

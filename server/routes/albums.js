@@ -65,4 +65,15 @@ router.delete("/delete/:albumId", async (req, res) => {
   }
 });
 
+router.get("/search/:key", async (req, res) => {
+  const result = await album.find({
+    $or: [{ name: { $regex: req.params.key } }],
+  });
+  if (result) {
+    res.status(200).send({ success: true, data: result });
+  } else {
+    res.status(400).send({ success: false, msg: "No data found!" });
+  }
+});
+
 module.exports = router;

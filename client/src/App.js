@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
-import { Home, Login, Dashboard } from "./components";
-import { AnimatePresence } from "framer-motion";
+import { HomePage } from "./pages/HomePage";
+import { AnimatePresence, motion } from "framer-motion";
 import { useStateValue } from "./context/stateProvider";
 import { app } from "./config/firebase.config";
 import { getAuth } from "firebase/auth";
 import { validateUser } from "./api";
 import { actionType } from "./context/reducer";
+import MusicPlayer from "./components/BetaComponents/MusicPlayer";
 
 export default function App() {
   const firebaseAuth = getAuth(app);
   const navigate = useNavigate();
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user, isSongPlaying }, dispatch] = useStateValue();
   const [isLoading, setIsLoading] = useState(false);
   const [auth, setAuth] = useState(
     false || window.localStorage.getItem("auth") === "true"
@@ -44,12 +45,16 @@ export default function App() {
     });
   }, []);
   return (
-    <AnimatePresence mode="wait">
-      <Routes>
-        <Route path="/*" element={<Home />} />
-        <Route path="/login" element={<Login setAuth={setAuth} />} />
-        <Route path="/dashboard/*" element={<Dashboard />} />
-      </Routes>
+    <AnimatePresence>
+      <div>
+        <Routes>
+          <Route path="/*" element={<HomePage />} />
+          {/* <Route path="/login" element={<Login setAuth={setAuth} />} />
+          <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/music" element={<MusicList />} /> */}
+        </Routes>
+        {isSongPlaying && <MusicPlayer />}
+      </div>
     </AnimatePresence>
   );
 }
