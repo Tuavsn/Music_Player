@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useStateValue } from "../../context/stateProvider";
-import { actionType } from "../../context/reducer";
-import { getAllSongs, getSongById } from "../../api";
+import { useStateValue } from "../context/stateProvider";
+import { actionType } from "../context/reducer";
+import { getAllSongs, getSongById } from "../api";
 import { motion } from "framer-motion";
 import { IoArrowRedo, IoArrowUndo, IoMusicalNote } from "react-icons/io5";
 import AudioPlayer from "react-h5-audio-player";

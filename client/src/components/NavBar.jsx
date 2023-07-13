@@ -4,7 +4,7 @@ import { BiSolidHot, BiSolidPlaylist, BiLogOutCircle } from "react-icons/bi";
 import { BsFillMusicPlayerFill } from "react-icons/bs";
 import { AiOutlineMenu, AiTwotoneHome, AiFillWechat } from "react-icons/ai";
 import { RiAdminLine } from "react-icons/ri";
-import { app } from "../../config/firebase.config";
+import { app } from "../config/firebase.config";
 import { getAuth } from "firebase/auth";
 
 const NavBar = () => {

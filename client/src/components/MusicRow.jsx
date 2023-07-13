@@ -1,6 +1,6 @@
 import React from "react";
-import { useStateValue } from "../../context/stateProvider";
-import { actionType } from "../../context/reducer";
+import { useStateValue } from "../context/stateProvider";
+import { actionType } from "../context/reducer";
 import { motion } from "framer-motion";
 const MusicRow = ({ data, index }) => {
     const [{ song, isSongPlaying }, dispatch] = useStateValue()

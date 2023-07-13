@@ -1,5 +1,5 @@
 import React from "react";
-import { Home, SideBar } from "../components/BetaComponents";
+import { Home, SideBar } from "../components";
 import Background from "../assets/img/background.jpg";
 
 export const HomePage = () => {

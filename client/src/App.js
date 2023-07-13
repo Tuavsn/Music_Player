@@ -8,7 +8,7 @@ import { app } from "./config/firebase.config";
 import { getAuth } from "firebase/auth";
 import { validateUser } from "./api";
 import { actionType } from "./context/reducer";
-import MusicPlayer from "./components/BetaComponents/MusicPlayer";
+import MusicPlayer from "./components/MusicPlayer";
 
 export default function App() {
   const firebaseAuth = getAuth(app);

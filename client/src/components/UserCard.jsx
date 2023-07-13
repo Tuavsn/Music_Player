@@ -1,5 +1,5 @@
 import React from "react";
-import { useStateValue } from "../../context/stateProvider";
+import { useStateValue } from "../context/stateProvider";
 import { FaCrown } from "react-icons/fa";
 
 

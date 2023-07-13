@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { useStateValue } from "../../context/stateProvider";
-import { Top100Songs } from "../../api";
-import { actionType } from "../../context/reducer";
+import { useStateValue } from "../context/stateProvider";
+import { Top100Songs } from "../api";
+import { actionType } from "../context/reducer";
 import { motion } from "framer-motion";
 import MusicRow from "./MusicRow";
 
